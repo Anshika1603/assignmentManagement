@@ -1,6 +1,5 @@
 package com.knoldus.assignmentmanagementsystem.service;
 
-import com.knoldus.assignmentmanagementsystem.model.Intern;
 import com.knoldus.assignmentmanagementsystem.model.Mentor;
 import org.springframework.stereotype.Service;
 

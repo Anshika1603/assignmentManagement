@@ -1,5 +1,6 @@
 package com.knoldus.assignmentmanagementsystem.service.impl;
 
+import com.knoldus.assignmentmanagementsystem.exception.ResourceNotFoundException;
 import com.knoldus.assignmentmanagementsystem.model.Mentor;
 import com.knoldus.assignmentmanagementsystem.repository.MentorRepository;
 import com.knoldus.assignmentmanagementsystem.service.MentorService;
@@ -27,7 +28,7 @@ public class MentorServiceImpl implements MentorService {
 
     @Override
     public String updateMentor(Mentor mentor, Integer mentorId) {
-        Mentor existingMentor=mentorRepository.findById(mentorId).orElseThrow(() -> new OpenApiResourceNotFoundException("Resource Not Found"));
+        Mentor existingMentor=mentorRepository.findById(mentorId).orElseThrow(() -> new ResourceNotFoundException("Mentor not found with Id: "+mentorId));
         existingMentor.setEmployeeId(mentor.getEmployeeId());
         existingMentor.setName(mentor.getName());
         existingMentor.setStudio(mentor.getStudio());

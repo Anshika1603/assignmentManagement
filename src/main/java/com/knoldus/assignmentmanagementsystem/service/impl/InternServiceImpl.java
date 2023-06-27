@@ -1,5 +1,6 @@
 package com.knoldus.assignmentmanagementsystem.service.impl;
 
+import com.knoldus.assignmentmanagementsystem.exception.ResourceNotFoundException;
 import com.knoldus.assignmentmanagementsystem.model.Intern;
 import com.knoldus.assignmentmanagementsystem.repository.InternRepository;
 import com.knoldus.assignmentmanagementsystem.service.InternService;
@@ -27,7 +28,7 @@ public class InternServiceImpl implements InternService {
 
     @Override
     public String updateIntern(Intern intern,Integer internId) {
-        Intern existingIntern=internRepository.findById(internId).orElseThrow(() -> new OpenApiResourceNotFoundException("Resource not found"));
+        Intern existingIntern=internRepository.findById(internId).orElseThrow(() -> new ResourceNotFoundException("Intern not found with InternId "+internId));
         existingIntern.setInternId(intern.getInternId());
         existingIntern.setName(intern.getName());
         existingIntern.setStudio(intern.getStudio());
