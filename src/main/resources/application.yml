@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    show-sql: ${SPRING_JPA_SHOW_SQL}
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+logging:
+  level:
+    org.springframework: ${LOGGING_LEVEL_ORG_SPRINGFRAMEWORK}
+server:
+  port: ${SERVER_PORT}
