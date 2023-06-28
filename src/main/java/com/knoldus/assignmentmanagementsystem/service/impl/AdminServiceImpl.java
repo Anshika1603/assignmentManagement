@@ -10,6 +10,11 @@ import org.springframework.stereotype.Component;
 import java.time.LocalTime;
 
 
+/**
+ The AdminServiceImpl class is an implementation of the service layer
+ for the administration
+ functionality in the Assignment Management System.
+ */
 @Component
 public class AdminServiceImpl implements AdminService {
 

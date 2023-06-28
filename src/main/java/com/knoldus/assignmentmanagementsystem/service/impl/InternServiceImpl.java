@@ -11,21 +11,57 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ The InternServiceImpl class is an implementation of
+ the InternService interface,
+ representing the service layer for handling intern entities in the
+ Assignment Management System.
+ */
 @Component
 public class InternServiceImpl implements InternService {
 
+    /**
+     This field represents an instance of the InternRepository interface,
+     which is responsible for
+     interacting with the underlying data storage and performing
+     database operations related to interns.
+     */
     @Autowired
     private InternRepository internRepository;
+
+    /**
+     Retrieves a list of all interns.
+     This method retrieves all the intern records from the data source
+     using the internRepository.
+     It returns a list of Intern objects representing all the interns
+     available in the system.
+     @return A list of Intern objects representing all interns.
+     */
     @Override
     public List<Intern> getAll() {
         return internRepository.findAll();
     }
 
+    /**
+     Adds a new intern to the system.
+     This method adds the provided Intern object to the data source
+     using the internRepository.
+     @param intern The Intern object to be added.
+     @return The added Intern object.
+     */
     @Override
-    public Intern addIntern(Intern intern) {
+    public Intern addIntern(final Intern intern) {
         return internRepository.save(intern);
     }
 
+    /**
+     Updates an existing intern in the system.
+     @param intern The updated Intern object containing the new information.
+     @param internId The ID of the intern to be updated.
+     @return A string indicating the success of the update operation.
+     @throws OpenApiResourceNotFoundException
+     if the intern with the given ID is not found in the data source.
+     */
     @Override
     public String updateIntern(Intern intern,Integer internId) {
         Intern existingIntern=internRepository.findById(internId).orElseThrow(() -> new ResourceNotFoundException("Intern not found with InternId "+internId));
@@ -35,16 +71,31 @@ public class InternServiceImpl implements InternService {
         return "Updated Record of Intern";
     }
 
+    /**
+     Deletes an intern from the system.
+     This method deletes the intern with the specified internId
+     from the data source.
+     @param internId The ID of the intern to be deleted.
+     @return A string indicating the success of the delete operation,
+     including the ID of the deleted intern.
+     */
     @Override
-    public String deleteIntern(Integer internId) {
+    public String deleteIntern(final Integer internId) {
         internRepository.deleteById(internId);
-        return "Deleted Record of Intern with Id = "+internId;
+        return "Deleted Record of Intern with Id = " + internId;
     }
 
+    /**
+     Retrieves the details of a specific intern.
+     This method retrieves the intern with the specified internId
+     from the data source using the
+     internRepository.
+     @param internId The ID of the intern to retrieve details for.
+     @return An Optional object containing the intern details
+     if found, otherwise empty.
+     */
     @Override
-    public Optional<Intern> getDetails(Integer internId) {
+    public Optional<Intern> getDetails(final Integer internId) {
         return internRepository.findById(internId);
     }
-
-
 }

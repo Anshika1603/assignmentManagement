@@ -7,29 +7,30 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- The Intern class represents an intern in the Assignment Management System.
- */
+ The Admin class represents an admin in the Assignment Management System.
+*/
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Intern {
-    /**
-     * The internId field represents the unique identifier for an intern
-     * in the Assignment Management System.
-     */
-    @Id
-    private Integer internId;
+public class Admin {
 
     /**
-     The name field represents the name of an intern
+     The AdminId field represents the unique identifier
+     for an admin in the Assignment Management System.
+     */
+    @Id
+    private Integer adminId;
+
+    /**
+     The name field represents the name of an admin
      in the Assignment Management System.
      */
     private String name;
 
     /**
-    The Studio field represents the studio associated with an intern in the
+     The studio field represents the studio associated with an admin in the
      Assignment Management System.
-    */
+     */
     private String studio;
 }

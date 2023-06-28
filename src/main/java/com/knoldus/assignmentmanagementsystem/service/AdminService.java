@@ -3,10 +3,11 @@ package com.knoldus.assignmentmanagementsystem.service;
 import com.knoldus.assignmentmanagementsystem.model.KipKupPlan;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalTime;
-import java.util.List;
-import java.util.Optional;
 
+/**
+ The AdminService interface defines the contract for managing
+ administrative operations in the system.
+ */
 @Service
 public interface AdminService {
 
@@ -15,3 +16,6 @@ public interface AdminService {
     public String updateKipKupPlan(KipKupPlan kipKupPlan, Integer sessionId);
 
 }
+
+
+
