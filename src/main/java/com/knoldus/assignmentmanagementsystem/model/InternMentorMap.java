@@ -22,7 +22,7 @@ public class InternMentorMap {
     @Id
     private Integer mentorId;
 
-    private LocalDate currentDate=LocalDate.now();
+    private LocalDate creationDate=LocalDate.now();
 
     private LocalDate modifiedDate=LocalDate.now();
 
