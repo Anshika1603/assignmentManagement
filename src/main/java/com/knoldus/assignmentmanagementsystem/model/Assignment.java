@@ -1,4 +1,4 @@
 package com.knoldus.assignmentmanagementsystem.model;
 
-public class Assignment gi{
+public class Assignment {
 }
