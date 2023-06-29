@@ -136,6 +136,7 @@ class AssignmentManagementSystemApplicationTests {
         verify(internRepository, times(1)).deleteById(internId);
     }
 
+
     @Test
     public void deleteIntern_WhenInternDoesNotExist_ThrowResourceNotFoundException() {
         Integer internId = 1;
@@ -145,6 +146,7 @@ class AssignmentManagementSystemApplicationTests {
 
         verify(internRepository, never()).deleteById(internId);
     }
+
 
 
 }

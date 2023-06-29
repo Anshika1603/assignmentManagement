@@ -86,8 +86,17 @@ public class InternServiceImpl implements InternService {
      */
     @Override
     public String deleteIntern(final Integer internId) {
-        internRepository.deleteById(internId);
-        return "Deleted Record of Intern with Id = " + internId;
+        Optional<Intern> intern= internRepository.findById(internId);
+        if(intern.isPresent())
+        {
+            internRepository.deleteById(internId);
+            return "Deleted Record of Intern with Id = " + internId;
+
+        }
+        else {
+            throw new ResourceNotFoundException("no record found of this id ");
+        }
+
     }
 
     /**
