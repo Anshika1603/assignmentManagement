@@ -2,12 +2,12 @@ package com.knoldus.assignmentmanagementsystem.service.impl;
 
 import com.knoldus.assignmentmanagementsystem.exception.ResourceNotFoundException;
 import com.knoldus.assignmentmanagementsystem.model.KipKupPlan;
+
+//import com.knoldus.assignmentmanagementsystem.repository.InternMentorRepository;
 import com.knoldus.assignmentmanagementsystem.repository.KipKupRepository;
 import com.knoldus.assignmentmanagementsystem.service.AdminService;
-import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.time.LocalTime;
 
 
 /**
@@ -20,6 +20,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private KipKupRepository kipKupRepository;
+
+//    @Autowired
+//    private InternMentorRepository internMentorRepository;
 
     @Override
     public String createPlan(KipKupPlan kipKupPlan) {
@@ -38,5 +41,11 @@ public class AdminServiceImpl implements AdminService {
         existingPlan.setMentorName(kipKupPlan.getMentorName());
         return "Updated Plan";
     }
+
+//    @Override
+//    public String assignMentorToIntern(InternMentorMapping internMentorMap){
+//        internMentorRepository.save(internMentorMap);
+//        return "Assigned Mentor " +internMentorMap.getMentor_Id()+ "to Intern " +internMentorMap.getIntern_Id();
+//    }
 
 }

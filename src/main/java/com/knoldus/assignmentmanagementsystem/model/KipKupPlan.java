@@ -21,7 +21,7 @@ public class KipKupPlan {
 
     private LocalDate date;
 
-    private LocalTime time;
+    private String time;
 
     private String topic;
 

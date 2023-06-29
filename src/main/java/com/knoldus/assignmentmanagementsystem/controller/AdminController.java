@@ -2,17 +2,11 @@ package com.knoldus.assignmentmanagementsystem.controller;
 
 import com.knoldus.assignmentmanagementsystem.model.KipKupPlan;
 import com.knoldus.assignmentmanagementsystem.service.AdminService;
-import com.knoldus.assignmentmanagementsystem.service.InternService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalTime;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AdminController {
@@ -27,10 +21,16 @@ public class AdminController {
         return ResponseEntity.ok(adminService.createPlan(kipKupPlan));
     }
 
-    @PutMapping("/updatePlan")
-    public ResponseEntity<String> updatePlan(@RequestBody KipKupPlan kipKupPlan, Integer sessionId){
+    @PutMapping("/updatePlan/{sessionId}")
+    public ResponseEntity<String> updatePlan(@RequestBody KipKupPlan kipKupPlan,@PathVariable Integer sessionId){
         logger.info("Updating Plan");
         return ResponseEntity.ok(adminService.updateKipKupPlan(kipKupPlan,sessionId));
     }
+
+//    @PostMapping("/assignMentorToIntern")
+//    public ResponseEntity<String> assignMentorToIntern(@RequestBody InternMentorMapping internMentorMap){
+//        logger.info("Assigning Mentor to Intern");
+//        return ResponseEntity.ok(adminService.assignMentorToIntern(internMentorMap));
+//    }
 
 }

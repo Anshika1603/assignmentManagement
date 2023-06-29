@@ -6,8 +6,10 @@ import com.knoldus.assignmentmanagementsystem.repository.InternRepository;
 import com.knoldus.assignmentmanagementsystem.service.InternService;
 import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,9 +67,12 @@ public class InternServiceImpl implements InternService {
     @Override
     public String updateIntern(Intern intern,Integer internId) {
         Intern existingIntern=internRepository.findById(internId).orElseThrow(() -> new ResourceNotFoundException("Intern not found with InternId "+internId));
-        existingIntern.setInternId(intern.getInternId());
-        existingIntern.setName(intern.getName());
-        existingIntern.setStudio(intern.getStudio());
+        existingIntern.setEmpId(intern.getEmpId());
+        existingIntern.setCompetencyName(intern.getCompetencyName());
+        existingIntern.setSkills(intern.getSkills());
+        existingIntern.setFirstName(intern.getFirstName());
+        existingIntern.setLastName(intern.getLastName());
+        existingIntern.setModifiedDate(LocalDate.now());
         return "Updated Record of Intern";
     }
 

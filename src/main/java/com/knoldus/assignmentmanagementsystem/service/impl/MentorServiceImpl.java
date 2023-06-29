@@ -8,6 +8,7 @@ import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,9 +66,9 @@ public class MentorServiceImpl implements MentorService {
         Mentor existingMentor = mentorRepository.findById(mentorId)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Mentor not found with Id " + mentorId));
-        existingMentor.setEmployeeId(mentor.getEmployeeId());
-        existingMentor.setName(mentor.getName());
-        existingMentor.setStudio(mentor.getStudio());
+        existingMentor.setEmpId(mentor.getEmpId());
+        existingMentor.setCompetencyName(mentor.getCompetencyName());
+        existingMentor.setModifiedDate(LocalDate.now());
         return "record has been updated";
     }
 

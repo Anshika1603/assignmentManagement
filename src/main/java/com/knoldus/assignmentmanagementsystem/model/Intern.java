@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 /**
  The Intern class represents an intern in the Assignment Management System.
  */
@@ -21,15 +23,17 @@ public class Intern {
     @Id
     private Integer internId;
 
-    /**
-     The name field represents the name of an intern
-     in the Assignment Management System.
-     */
-    private String name;
+    private String empId;
 
-    /**
-    The Studio field represents the studio associated with an intern in the
-     Assignment Management System.
-    */
-    private String studio;
+    private String competencyName;
+
+    private String firstName;
+
+    private String lastName;
+
+    private String skills;
+
+    private LocalDate createdDate=LocalDate.now();
+
+    private LocalDate modifiedDate=LocalDate.now();
 }

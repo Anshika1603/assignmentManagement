@@ -15,6 +15,8 @@ public interface AdminService {
 
     public String updateKipKupPlan(KipKupPlan kipKupPlan, Integer sessionId);
 
+//    public String assignMentorToIntern(InternMentorMapping internMentorMap);
+
 }
 
 

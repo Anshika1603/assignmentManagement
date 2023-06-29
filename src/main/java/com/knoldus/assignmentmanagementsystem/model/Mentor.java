@@ -5,6 +5,9 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.auditing.CurrentDateTimeProvider;
+
+import java.time.LocalDate;
 
 
 /**
@@ -21,18 +24,13 @@ public class Mentor {
      in the Assignment Management System.
      */
     @Id
-    private Integer employeeId;
+    private Integer mentorId;
 
-    /**
-     The name field represents the name of a mentor, and the
-     studio field represents the studio
-     associated with the mentor.
-     */
-    private String name;
+    private String empId;
 
-    /**
-     The studio field represents
-     the studio associated with a mentor in the Assignment Management System.
-     */
-    private String studio;
+    private String competencyName;
+
+    private LocalDate createdDate=LocalDate.now();
+
+    private LocalDate modifiedDate=LocalDate.now();
 }
