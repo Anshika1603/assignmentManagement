@@ -1,11 +1,14 @@
 package com.knoldus.assignmentmanagementsystem.service.impl;
 
 import com.knoldus.assignmentmanagementsystem.exception.ResourceNotFoundException;
+import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Mentor;
+import com.knoldus.assignmentmanagementsystem.repository.AssignmentRepository;
 import com.knoldus.assignmentmanagementsystem.repository.MentorRepository;
 import com.knoldus.assignmentmanagementsystem.service.MentorService;
 import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -21,12 +24,18 @@ import java.util.Optional;
 public class MentorServiceImpl implements MentorService {
 
     /**
-     The mentorRepository field is annotated with @Autowired,
+     The mentorRassignmentRepositoryepository field is annotated with @Autowired,
      indicating that it is a dependency
      to be automatically injected by the Spring framework.
      */
     @Autowired
     private MentorRepository mentorRepository;
+
+    @Autowired
+    private AssignmentRepository assignmentRepository;
+
+    @Autowired
+    MongoTemplate mongoTemplate;
 
     /**
      Retrieves a list of all mentors.
@@ -69,6 +78,7 @@ public class MentorServiceImpl implements MentorService {
         existingMentor.setEmpId(mentor.getEmpId());
         existingMentor.setCompetencyName(mentor.getCompetencyName());
         existingMentor.setModifiedDate(LocalDate.now());
+        mentorRepository.save(existingMentor);
         return "record has been updated";
     }
 
@@ -98,5 +108,11 @@ public class MentorServiceImpl implements MentorService {
     @Override
     public Optional<Mentor> getDetailsOfMentor(final Integer mentorId) {
         return mentorRepository.findById(mentorId);
+    }
+
+    @Override
+    public String createAssignment(final Assignment assignment) {
+        assignmentRepository.save(assignment);
+        return "Created Assignment Successfully";
     }
 }

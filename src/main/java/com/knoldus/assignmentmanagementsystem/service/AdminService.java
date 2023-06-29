@@ -1,6 +1,8 @@
 package com.knoldus.assignmentmanagementsystem.service;
 
 import com.knoldus.assignmentmanagementsystem.model.InternMentorMap;
+import com.knoldus.assignmentmanagementsystem.model.Assignment;
+import com.knoldus.assignmentmanagementsystem.model.InternMentorMapId;
 import com.knoldus.assignmentmanagementsystem.model.KipKupPlan;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ public interface AdminService {
     public String updateKipKupPlan(KipKupPlan kipKupPlan, Integer sessionId);
 
     public String assignMentorToIntern(InternMentorMap internMentorMap);
+
+    String reassignMentor(InternMentorMapId internMentorMapId, InternMentorMap internMentorMap);
 
 }
 

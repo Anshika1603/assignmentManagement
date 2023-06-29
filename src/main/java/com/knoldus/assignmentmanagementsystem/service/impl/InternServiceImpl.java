@@ -1,12 +1,13 @@
 package com.knoldus.assignmentmanagementsystem.service.impl;
 
 import com.knoldus.assignmentmanagementsystem.exception.ResourceNotFoundException;
+import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Intern;
+import com.knoldus.assignmentmanagementsystem.repository.AssignmentRepository;
 import com.knoldus.assignmentmanagementsystem.repository.InternRepository;
 import com.knoldus.assignmentmanagementsystem.service.InternService;
 import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.auditing.CurrentDateTimeProvider;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -30,6 +31,9 @@ public class InternServiceImpl implements InternService {
      */
     @Autowired
     private InternRepository internRepository;
+
+    @Autowired(required = true)
+    private AssignmentRepository assignmentRepository;
 
     /**
      * Retrieves a list of all interns.
@@ -75,6 +79,7 @@ public class InternServiceImpl implements InternService {
         existingIntern.setFirstName(intern.getFirstName());
         existingIntern.setLastName(intern.getLastName());
         existingIntern.setModifiedDate(LocalDate.now());
+        internRepository.save(existingIntern);
         return "Updated Record of Intern";
     }
 
@@ -111,5 +116,11 @@ public class InternServiceImpl implements InternService {
     @Override
     public Optional<Intern> getDetails(final Integer internId) {
         return internRepository.findById(internId);
+    }
+
+    @Override
+    public String submitAssignment(final Assignment assignment) {
+        assignmentRepository.save(assignment);
+        return "Submitted Assignment Successfully";
     }
 }

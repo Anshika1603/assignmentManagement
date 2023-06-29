@@ -1,5 +1,6 @@
 package com.knoldus.assignmentmanagementsystem.service;
 
+import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Intern;
 import org.springframework.stereotype.Service;
 
@@ -50,4 +51,6 @@ public interface InternService {
      otherwise empty.
      */
     Optional<Intern> getDetails(Integer internId);
+
+    String submitAssignment(Assignment assignment);
 }

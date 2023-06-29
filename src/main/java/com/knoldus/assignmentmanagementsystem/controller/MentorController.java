@@ -1,6 +1,7 @@
 package com.knoldus.assignmentmanagementsystem.controller;
 
 
+import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Mentor;
 import com.knoldus.assignmentmanagementsystem.service.MentorService;
 import org.slf4j.Logger;
@@ -122,5 +123,10 @@ public class MentorController {
         LOGGER.info("Finding details of Mentor");
         return ResponseEntity.ok(mentorService.
                 getDetailsOfMentor(mentorId));
+    }
+
+    @PostMapping("/createAssignment")
+    public ResponseEntity<String> createAssignment(@RequestBody Assignment assignment){
+        return ResponseEntity.ok(mentorService.createAssignment(assignment));
     }
 }

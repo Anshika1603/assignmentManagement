@@ -1,5 +1,6 @@
 package com.knoldus.assignmentmanagementsystem.controller;
 
+import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Intern;
 import com.knoldus.assignmentmanagementsystem.service.InternService;
 import org.slf4j.Logger;
@@ -104,5 +105,11 @@ public class InternController {
     public ResponseEntity<Optional<Intern>> getDetailsOfInterns(@PathVariable Integer internId){
         logger.info("Finding details of Intern");
         return ResponseEntity.ok(internService.getDetails(internId));
+    }
+
+    @PostMapping("submitAssignment")
+    public ResponseEntity<String> submitAssignment(@RequestBody Assignment assignment){
+        logger.info("submitting Assignment");
+        return ResponseEntity.ok(internService.submitAssignment(assignment));
     }
 }

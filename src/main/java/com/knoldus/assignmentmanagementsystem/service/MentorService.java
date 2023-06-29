@@ -1,5 +1,6 @@
 package com.knoldus.assignmentmanagementsystem.service;
 
+import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Mentor;
 import org.springframework.stereotype.Service;
 
@@ -49,4 +50,6 @@ public interface MentorService {
      otherwise empty.
      */
     Optional<Mentor> getDetailsOfMentor(Integer mentorId);
+
+    String createAssignment(Assignment assignment);
 }

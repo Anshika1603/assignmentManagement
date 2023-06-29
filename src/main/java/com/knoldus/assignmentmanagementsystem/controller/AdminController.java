@@ -1,6 +1,7 @@
 package com.knoldus.assignmentmanagementsystem.controller;
 
 import com.knoldus.assignmentmanagementsystem.model.InternMentorMap;
+import com.knoldus.assignmentmanagementsystem.model.InternMentorMapId;
 import com.knoldus.assignmentmanagementsystem.model.KipKupPlan;
 import com.knoldus.assignmentmanagementsystem.service.AdminService;
 import org.slf4j.Logger;
@@ -34,4 +35,9 @@ public class AdminController {
         return ResponseEntity.ok(adminService.assignMentorToIntern(internMentorMap));
     }
 
+    @PutMapping("/reassign")
+    public ResponseEntity<String> reassign(@RequestBody InternMentorMapId internMentorMapId,@RequestBody InternMentorMap internMentorMap){
+        logger.info("Reassigning Mentor to Intern");
+        return ResponseEntity.ok(adminService.reassignMentor(internMentorMapId,internMentorMap));
+    }
 }
