@@ -6,9 +6,8 @@ spring:
 
 #  data:
 #    mongodb:
-#      database: azure-cosmos-mongodb16
-#      uri: mongodb://azure-cosmos-mongodb16:b7Htt5GGYYdQDcwR1194Drt75NgYkhM34laQkJ9N41ddcEmgr38RLNwJx8XmRfG9RxaYUg8vM06GACDbWU0y3g==@azure-cosmos-mongodb16.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@azure-cosmos-mongodb16@
-
+#      database: SampleDB
+#      uri: mongodb://rahul:SPvu80uwo7ESrt0J2JsJs4Baw89nFEKZiKJSdJhFaSsqyH6y1VC1FBzRiOgOY1oFlSFYKizD7966ACDbHr2jYQ==@rahul.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@rahul@
   jpa:
     show-sql: ${SPRING_JPA_SHOW_SQL}
     hibernate:
