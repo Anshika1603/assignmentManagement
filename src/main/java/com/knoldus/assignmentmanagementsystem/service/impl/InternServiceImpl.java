@@ -73,7 +73,7 @@ public class InternServiceImpl implements InternService {
     @Override
     public String updateIntern(Intern intern, Integer internId) {
         Intern existingIntern = internRepository.findById(internId).orElseThrow(() -> new ResourceNotFoundException("Intern not found with InternId " + internId));
-        existingIntern.setEmpId(intern.getEmpId());
+         existingIntern.setEmpId(intern.getEmpId());
         existingIntern.setCompetencyName(intern.getCompetencyName());
         existingIntern.setSkills(intern.getSkills());
         existingIntern.setFirstName(intern.getFirstName());

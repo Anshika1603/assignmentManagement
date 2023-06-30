@@ -1,27 +1,25 @@
 spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL}
-#    username: ${SPRING_DATASOURCE_USERNAME}
-#    password: ${SPRING_DATASOURCE_PASSWORD}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
 
-  data:
-    mongodb:
-      database: azure-cosmos-mongodb16
-      uri: mongodb://azure-cosmos-mongodb16:b7Htt5GGYYdQDcwR1194Drt75NgYkhM34laQkJ9N41ddcEmgr38RLNwJx8XmRfG9RxaYUg8vM06GACDbWU0y3g==@azure-cosmos-mongodb16.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@azure-cosmos-mongodb16@
+#  data:
+#    mongodb:
+#      database: azure-cosmos-mongodb16
+#      uri: mongodb://azure-cosmos-mongodb16:b7Htt5GGYYdQDcwR1194Drt75NgYkhM34laQkJ9N41ddcEmgr38RLNwJx8XmRfG9RxaYUg8vM06GACDbWU0y3g==@azure-cosmos-mongodb16.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@azure-cosmos-mongodb16@
 
   jpa:
     show-sql: ${SPRING_JPA_SHOW_SQL}
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.SQLServer2016Dialect
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.SQLServer2016Dialect
 logging:
-  level:
-    org.springframework.boot.logging.LogLevel: ${LOGGING_LEVEL_ORG_SPRINGFRAMEWORK}
+  level: ${LOGGING_LEVEL_ORG_SPRINGFRAMEWORK}
 server:
   port: ${SERVER_PORT}
-
 
 
 
