@@ -1,8 +1,10 @@
 package com.knoldus.assignmentmanagementsystem.controller;
 
 
+import com.knoldus.assignmentmanagementsystem.exception.ResourceNotFoundException;
 import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Mentor;
+import com.knoldus.assignmentmanagementsystem.publisher.Publisher;
 import com.knoldus.assignmentmanagementsystem.service.MentorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +37,9 @@ public class MentorController {
      */
     @Autowired
     private MentorService mentorService;
+
+    @Autowired
+    private Publisher publisher;
 
     /**
      The logger field represents an instance of the Logger class from
@@ -127,6 +132,13 @@ public class MentorController {
 
     @PostMapping("/createAssignment")
     public ResponseEntity<String> createAssignment(@RequestBody Assignment assignment){
-        return ResponseEntity.ok(mentorService.createAssignment(assignment));
+        String publish= mentorService.createAssignment(assignment);
+        if(publish!=null){
+            publisher.meaagesender();
+            return ResponseEntity.ok(publish);
+        }
+        else{
+            throw new ResourceNotFoundException("Data not saved in the Database");
+        }
     }
 }

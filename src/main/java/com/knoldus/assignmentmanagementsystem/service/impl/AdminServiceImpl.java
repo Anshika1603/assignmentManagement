@@ -70,8 +70,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public String reassignMentor(InternMentorMapId internMentorMapId, InternMentorMap internMentorMap){
-        if(internMentorRepository.existsById(internMentorMapId)){
+    public String reassignMentor(Integer mentorId, Integer internId, InternMentorMap internMentorMap){
+        if(mentorRepository.existsById(mentorId)){
+            internMentorMap.setMentorId(internMentorMap.getMentorId());
             internMentorRepository.save(internMentorMap);
         }
         else {

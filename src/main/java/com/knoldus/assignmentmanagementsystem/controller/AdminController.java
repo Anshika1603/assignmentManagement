@@ -36,8 +36,8 @@ public class AdminController {
     }
 
     @PutMapping("/reassign")
-    public ResponseEntity<String> reassign(@RequestBody InternMentorMapId internMentorMapId,@RequestBody InternMentorMap internMentorMap){
+    public ResponseEntity<String> reassign(@PathVariable Integer mentorId,@PathVariable Integer internId, @RequestBody InternMentorMap internMentorMap){
         logger.info("Reassigning Mentor to Intern");
-        return ResponseEntity.ok(adminService.reassignMentor(internMentorMapId,internMentorMap));
+        return ResponseEntity.ok(adminService.reassignMentor(mentorId,internId,internMentorMap));
     }
 }

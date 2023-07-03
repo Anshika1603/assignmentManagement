@@ -20,7 +20,7 @@ public interface AdminService {
 
     public String assignMentorToIntern(InternMentorMap internMentorMap);
 
-    String reassignMentor(InternMentorMapId internMentorMapId, InternMentorMap internMentorMap);
+    String reassignMentor(Integer mentorId, Integer internId, InternMentorMap internMentorMap);
 
 }
 
