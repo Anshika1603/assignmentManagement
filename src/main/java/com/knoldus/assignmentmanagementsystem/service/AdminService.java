@@ -14,15 +14,43 @@ import org.springframework.stereotype.Service;
 @Service
 public interface AdminService {
 
+    /**
+     * Creates a new KipKupPlan.
+     *
+     * @param kipKupPlan The KipKupPlan object representing the plan to be created.
+     * @return A String indicating the result of the operation.
+     */
     public String createPlan(KipKupPlan kipKupPlan);
 
+    /**
+     * Updates an existing KipKupPlan with the specified sessionId.
+     *
+     * @param kipKupPlan The KipKupPlan object representing the updated plan.
+     * @param sessionId  The unique identifier of the session.
+     * @return A String indicating the result of the operation.
+     */
     public String updateKipKupPlan(KipKupPlan kipKupPlan, Integer sessionId);
 
+    /**
+     * Assigns a mentor to an intern.
+     *
+     * @param internMentorMap The InternMentorMap object representing the mapping between an intern and a mentor.
+     * @return A String indicating the result of the operation.
+     */
     public String assignMentorToIntern(InternMentorMap internMentorMap);
 
-    String reassignMentor(Integer mentorId, Integer internId, InternMentorMap internMentorMap);
+    /**
+     * Reassigns a mentor for a specific intern.
+     *
+     * @param internId The unique identifier of the intern.
+     * @param mentorId The unique identifier of the mentor.
+     * @param internMentorMap  The InternMentorMap object representing the updated mapping.
+     * @return A String indicating the result of the operation.
+     */
+    public String reassignMentor(Integer mentorId, Integer internId, InternMentorMap internMentorMap);
 
 }
+
 
 
 

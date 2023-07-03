@@ -92,8 +92,14 @@ public class MentorServiceImpl implements MentorService {
      */
     @Override
     public String deleteMentor(final Integer mentorId) {
-        mentorRepository.deleteById(mentorId);
-        return "deleted mentor where id = " + mentorId;
+        Optional<Mentor> mentor = mentorRepository.findById(mentorId);
+        if(mentor.isPresent()){
+            mentorRepository.deleteById(mentorId);
+            return "deleted mentor where id = " + mentorId;
+        }
+        else {
+            throw new ResourceNotFoundException("no record of this id found");
+        }
     }
 
     /**

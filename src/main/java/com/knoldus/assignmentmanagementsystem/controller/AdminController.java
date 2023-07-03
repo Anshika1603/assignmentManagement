@@ -3,41 +3,33 @@ package com.knoldus.assignmentmanagementsystem.controller;
 import com.knoldus.assignmentmanagementsystem.model.InternMentorMap;
 import com.knoldus.assignmentmanagementsystem.model.InternMentorMapId;
 import com.knoldus.assignmentmanagementsystem.model.KipKupPlan;
-import com.knoldus.assignmentmanagementsystem.service.AdminService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class AdminController {
-    @Autowired
-    private AdminService adminService;
+public interface AdminController {
 
-    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-
+    @Operation(summary = "Create a new KipKupPlan")
     @PostMapping("/createPlan")
-    public ResponseEntity<String> createPlan(@RequestBody KipKupPlan kipKupPlan){
-        logger.info("Creating Plan");
-        return ResponseEntity.ok(adminService.createPlan(kipKupPlan));
-    }
+    public ResponseEntity<String> createPlan(@RequestBody KipKupPlan kipKupPlan);
 
+    @Operation(summary = "Update an existing KipKupPlan")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully updated the plan"),
+            @ApiResponse(responseCode = "404", description = "Plan not found")
+    })
     @PutMapping("/updatePlan/{sessionId}")
-    public ResponseEntity<String> updatePlan(@RequestBody KipKupPlan kipKupPlan,@PathVariable Integer sessionId){
-        logger.info("Updating Plan");
-        return ResponseEntity.ok(adminService.updateKipKupPlan(kipKupPlan,sessionId));
-    }
+    public ResponseEntity<String> updatePlan(@RequestBody KipKupPlan kipKupPlan, @PathVariable Integer sessionId);
 
+    @Operation(summary = "Assign a mentor to an intern")
     @PostMapping("/assignMentorToIntern")
-    public ResponseEntity<String> assignMentorToIntern(@RequestBody InternMentorMap internMentorMap){
-        logger.info("Assigning Mentor to Intern");
-        return ResponseEntity.ok(adminService.assignMentorToIntern(internMentorMap));
-    }
+    public ResponseEntity<String> assignMentorToIntern(@RequestBody InternMentorMap internMentorMap);
 
+    @Operation(summary = "Reassign a mentor")
     @PutMapping("/reassign")
-    public ResponseEntity<String> reassign(@PathVariable Integer mentorId,@PathVariable Integer internId, @RequestBody InternMentorMap internMentorMap){
-        logger.info("Reassigning Mentor to Intern");
-        return ResponseEntity.ok(adminService.reassignMentor(mentorId,internId,internMentorMap));
-    }
+    public ResponseEntity<String> reassign(@PathVariable Integer mentorId,@PathVariable Integer internId, @RequestBody InternMentorMap internMentorMap);
+
 }

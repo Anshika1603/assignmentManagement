@@ -6,6 +6,9 @@ spring:
     mongodb:
       database: ${SPRING_DATA_MONGODB_DATABASE}
       uri: ${SPRING_DATA_MONGODB_URI}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+
   jpa:
     show-sql: ${SPRING_JPA_SHOW_SQL}
     hibernate:
@@ -29,7 +32,6 @@ server:
 #      enabled: true
 #      token-acquire-timeout-seconds: 60
 #      refresh-interval: 1800000
-
 
 
 
