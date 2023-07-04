@@ -1,4 +1,4 @@
-package com.knoldus.assignmentmanagementsystem.controller.controller;
+package com.knoldus.assignmentmanagementsystem.controller.impl;
 
 import com.knoldus.assignmentmanagementsystem.controller.InternConroller;
 import com.knoldus.assignmentmanagementsystem.model.Assignment;
@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.List;
 import java.util.Optional;
 

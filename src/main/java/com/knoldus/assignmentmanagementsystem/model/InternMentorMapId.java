@@ -26,7 +26,6 @@ public class InternMentorMapId implements Serializable {
 
     public Integer getInternId() {
         return internId;
-
     }
 
     public void setInternId(Integer internId) {

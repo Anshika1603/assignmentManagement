@@ -1,8 +1,7 @@
-package com.knoldus.assignmentmanagementsystem.controller.controller;
+package com.knoldus.assignmentmanagementsystem.controller.impl;
 
 import com.knoldus.assignmentmanagementsystem.controller.AdminController;
 import com.knoldus.assignmentmanagementsystem.model.InternMentorMap;
-import com.knoldus.assignmentmanagementsystem.model.InternMentorMapId;
 import com.knoldus.assignmentmanagementsystem.model.KipKupPlan;
 import com.knoldus.assignmentmanagementsystem.service.AdminService;
 import org.slf4j.Logger;

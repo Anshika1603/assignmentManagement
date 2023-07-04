@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-class AssignmentManagementSystemApplicationTests {
+class InternServiceTest {
     @Mock
     InternRepository internRepository;
     @InjectMocks

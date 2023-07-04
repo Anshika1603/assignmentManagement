@@ -1,8 +1,10 @@
 package com.knoldus.assignmentmanagementsystem.service.impl;
 
+import com.knoldus.assignmentmanagementsystem.exception.EmptyInputException;
 import com.knoldus.assignmentmanagementsystem.exception.ResourceNotFoundException;
 import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Mentor;
+import com.knoldus.assignmentmanagementsystem.publisher.Publisher;
 import com.knoldus.assignmentmanagementsystem.repository.AssignmentRepository;
 import com.knoldus.assignmentmanagementsystem.repository.MentorRepository;
 import com.knoldus.assignmentmanagementsystem.service.MentorService;
@@ -36,6 +38,9 @@ public class MentorServiceImpl implements MentorService {
 
     @Autowired
     MongoTemplate mongoTemplate;
+
+    @Autowired
+    private Publisher publisher;
 
     /**
      Retrieves a list of all mentors.
@@ -118,7 +123,13 @@ public class MentorServiceImpl implements MentorService {
 
     @Override
     public String createAssignment(final Assignment assignment) {
-        assignmentRepository.save(assignment);
-        return "Created Assignment Successfully";
+        Assignment assignment1= assignmentRepository.save(assignment);
+        if(assignment1!=null){
+            publisher.meaagesender();
+            return "assignment is saved";
+        }
+        else{
+            throw new EmptyInputException("Please enter a valid Input");
+        }
     }
 }

@@ -24,14 +24,7 @@ logging:
 server:
   port: ${SERVER_PORT}
 
-#cloud:
-#  azure:
-#    keyvault:
-#      secret:
-#        endpoint: https://vault-springboot.vault.azure.net/
-#      enabled: true
-#      token-acquire-timeout-seconds: 60
-#      refresh-interval: 1800000
+
 
 
 

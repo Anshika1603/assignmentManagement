@@ -1,8 +1,6 @@
-package com.knoldus.assignmentmanagementsystem.controller.controller;
-
+package com.knoldus.assignmentmanagementsystem.controller.impl;
 
 import com.knoldus.assignmentmanagementsystem.controller.MentorController;
-import com.knoldus.assignmentmanagementsystem.exception.ResourceNotFoundException;
 import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Mentor;
 import com.knoldus.assignmentmanagementsystem.publisher.Publisher;
@@ -14,8 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
-
-
 import java.util.List;
 import java.util.Optional;
 
@@ -130,12 +126,6 @@ public class MentorControllerImpl implements MentorController {
 
     public ResponseEntity<String> createAssignment(@RequestBody Assignment assignment){
         String publish= mentorService.createAssignment(assignment);
-        if(publish!=null){
-            publisher.meaagesender();
-            return ResponseEntity.ok(publish);
-        }
-        else{
-            throw new ResourceNotFoundException("Data not saved in the Database");
-        }
+        return ResponseEntity.ok(publish);
     }
 }

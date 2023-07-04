@@ -17,7 +17,7 @@ public class Publisher {
     // Number of messages to be sent to the topic
     static final int numOfMessages = 3;
 
-    public void meaagesender(){
+    public void meaagesender() {
         ServiceBusSenderClient sender = new ServiceBusClientBuilder()
                 .connectionString(connectionString)
                 .sender()
