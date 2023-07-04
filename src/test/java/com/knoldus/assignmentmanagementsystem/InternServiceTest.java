@@ -147,8 +147,6 @@ class InternServiceTest {
         verify(internRepository, never()).deleteById(internId);
     }
 
-
-
 }
 
 

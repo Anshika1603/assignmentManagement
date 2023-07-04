@@ -11,16 +11,28 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ The AdminControllerImpl class is an implementation
+ of the AdminController interface.
+ */
 @Component
 public class AdminControllerImpl implements AdminController {
+
+    /**
+     Autowires an instance of the AdminService class to the AdminControllerImpl class.
+     */
     @Autowired
     private AdminService adminService;
 
+
+    /**
+     The logger object is used to record and log events and messages within the AdminControllerImpl class.
+     */
     private static final Logger logger = LoggerFactory.getLogger(AdminControllerImpl.class);
+
 
     /**
      * Creates a new KipKupPlan.
-     *
      * @param kipKupPlan The KipKupPlan to create.
      * @return ResponseEntity representing the status of the operation.
      */
@@ -31,7 +43,6 @@ public class AdminControllerImpl implements AdminController {
 
     /**
      * Updates an existing KipKupPlan.
-     *
      * @param kipKupPlan The updated KipKupPlan.
      * @param sessionId  The session ID of the plan to update.
      * @return ResponseEntity representing the status of the operation.
@@ -43,7 +54,6 @@ public class AdminControllerImpl implements AdminController {
 
     /**
      * Assigns a mentor to an intern.
-     *
      * @param internMentorMap The mapping between intern and mentor.
      * @return ResponseEntity representing the status of the operation.
      */
@@ -54,7 +64,6 @@ public class AdminControllerImpl implements AdminController {
 
     /**
      * Reassigns a mentor to an intern.
-     *
      * @param internId  The ID of the intern.
      * @param mentorId  The ID of the mentor.
      * @param internMentorMap The updated mapping between intern and mentor.
@@ -65,5 +74,4 @@ public class AdminControllerImpl implements AdminController {
         logger.info("Reassigning Mentor to Intern");
         return ResponseEntity.ok(adminService.reassignMentor(mentorId,internId,internMentorMap));
     }
-
 }
