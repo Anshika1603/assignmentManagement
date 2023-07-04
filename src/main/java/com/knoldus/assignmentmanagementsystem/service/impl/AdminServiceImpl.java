@@ -14,6 +14,8 @@ import com.knoldus.assignmentmanagementsystem.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static org.mockito.Mockito.when;
+
 
 /**
  The AdminServiceImpl class is an implementation of the service layer
@@ -80,5 +82,6 @@ public class AdminServiceImpl implements AdminService {
         }
         return "Reassigned Mentor " +internMentorMap.getMentorId()+ " to Intern " +internMentorMap.getInternId();
     }
+
 
 }
