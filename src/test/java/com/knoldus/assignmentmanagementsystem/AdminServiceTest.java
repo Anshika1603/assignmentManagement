@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
@@ -22,6 +21,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * This class contains unit tests for the AdminServiceImpl class.
+ */
 @SpringBootTest
 public class AdminServiceTest {
     @Mock
@@ -41,6 +43,9 @@ public class AdminServiceTest {
     @InjectMocks
     AdminServiceImpl adminService;
 
+    /**
+     * Test case to verify the successful creation of a KipKupPlan.
+     */
     @Test
     public void createPlan_WhenPlanIsCreated_ReturnSuccessMessage() {
         KipKupPlan kipKupPlan = new KipKupPlan();
@@ -62,6 +67,9 @@ public class AdminServiceTest {
         Mockito.verify(kipKupRepository, times(1)).save(kipKupPlan);
     }
 
+    /**
+     * Test case to verify the successful update of a KipKupPlan.
+     */
     @Test
     public void updateKipKupPlan_WhenPlanExists_ReturnSuccessMessage() {
         Integer sessionId = 1;
@@ -100,6 +108,9 @@ public class AdminServiceTest {
         Mockito.verify(kipKupRepository,times(1)).save(existingPlan);
     }
 
+    /**
+     * Test case to verify that a ResourceNotFoundException is thrown when updating a non-existing KipKupPlan.
+     */
     @Test
     public void updateKipKupPlan_WhenPlanDoesNotExist_ThrowResourceNotFoundException() {
         Integer sessionId = 1;
@@ -120,6 +131,11 @@ public class AdminServiceTest {
        Mockito.verify(kipKupRepository, times(1)).findById(sessionId);
     }
 
+
+    /**
+     * Test case for assigning a mentor to an intern when both the intern and mentor exist.
+     * The method should assign the mentor to the intern and return a success message.
+     */
     @Test
     public void assignMentorToIntern_WhenInternAndMentorExist_AssignMentorToIntern() {
         // Create an instance of InternMentorMap
@@ -141,6 +157,10 @@ public class AdminServiceTest {
         assertEquals("Assigned Mentor 1 to Intern 1", result);
     }
 
+    /**
+     * Test case for assigning a mentor to an intern when the mentor does not exist.
+     * The method should throw a ResourceNotFoundException and verify that the internMentorRepository.save method was not called.
+     */
     @Test
     public void assignMentorToIntern_WhenMentorDoesNotExist_ThrowResourceNotFoundException() {
         // Create an instance of InternMentorMap
@@ -159,42 +179,51 @@ public class AdminServiceTest {
         Mockito.verify(internMentorRepository, never()).save(internMentorMap);
     }
 
-//    @Test
-//    public void reassignMentor_WhenMentorInternMapExists_ReassignMentorToIntern() {
-//        // Create an instance of InternMentorMapId and InternMentorMap
-//        InternMentorMapId internMentorMapId = new InternMentorMapId(1, 1);
-//        InternMentorMap internMentorMap = new InternMentorMap();
-//        internMentorMap.setInternId(1);
-//        internMentorMap.setMentorId(2);
-//
-//        // Mock the behavior of the existById method to return true
-//        when(internMentorRepository.existsById(internMentorMapId)).thenReturn(true);
-//
-//        // Call the reassignMentor method and expect a successful reassignment message
-//        String result = adminService.reassignMentor(internMentorMapId, internMentorMap);
-//
-//        // Verify that the internMentorRepository.save method was called
-//        verify(internMentorRepository, times(1)).save(internMentorMap);
-//
-//        // Assert the expected result message
-//        assertEquals("Reassigned Mentor 2 to Intern 1", result);
-//    }
-//    @Test
-//    public void reassignMentor_WhenMentorInternMapDoesNotExist_ThrowResourceNotFoundException() {
-//        // Create an instance of InternMentorMapId and InternMentorMap
-//        InternMentorMapId internMentorMapId = new InternMentorMapId(1, 1);
-//        InternMentorMap internMentorMap = new InternMentorMap();
-//        internMentorMap.setInternId(1);
-//        internMentorMap.setMentorId(2);
-//
-//        // Mock the behavior of the existById method to return false
-//        when(internMentorRepository.existsById(internMentorMapId)).thenReturn(false);
-//
-//        // Call the reassignMentor method and expect a ResourceNotFoundException
-//        assertThrows(ResourceNotFoundException.class, () -> adminService.reassignMentor(internMentorMapId, internMentorMap));
-//
-//        // Verify that the internMentorRepository.save method was not called
-//        verify(internMentorRepository, never()).save(internMentorMap);
-//    }
+    /**
+     * Test case for reassigning a mentor to an intern when the mentor-intern mapping exists.
+     * The method should reassign the mentor to the intern and return a successful reassignment message.
+     */
+    @Test
+    public void reassignMentor_WhenMentorInternMapExists_ReassignMentorToIntern() {
+        // Create an instance of InternMentorMap
+        InternMentorMap internMentorMap = new InternMentorMap();
+        internMentorMap.setInternId(1);
+        internMentorMap.setMentorId(2);
+
+        // Mock the behavior of the existsById method to return true
+        when(mentorRepository.existsById(any(Integer.class))).thenReturn(true);
+
+        // Call the reassignMentor method and expect a successful reassignment message
+        String result = adminService.reassignMentor(2, 1, internMentorMap);
+
+        // Verify that the internMentorRepository.save method was called
+        verify(internMentorRepository, times(1)).save(internMentorMap);
+
+        // Assert the expected result message
+        assertEquals("Reassigned Mentor 2 to Intern 1", result);
+    }
+
+    /**
+     * Test case for reassigning a mentor to an intern when the mentor is not found.
+     * The method should throw a ResourceNotFoundException and ensure that the internMentorRepository.save method is not called.
+     */
+    @Test
+    public void reassignMentor_WhenMentorNotFound_ThrowsResourceNotFoundException() {
+        // Create an instance of InternMentorMap
+        InternMentorMap internMentorMap = new InternMentorMap();
+        internMentorMap.setInternId(1);
+        internMentorMap.setMentorId(2);
+
+        // Mock the behavior of the existsById method to return false
+        when(mentorRepository.existsById(any(Integer.class))).thenReturn(false);
+
+        // Call the reassignMentor method and expect a ResourceNotFoundException
+        assertThrows(ResourceNotFoundException.class, () -> {
+            adminService.reassignMentor(2, 1, internMentorMap);
+        });
+
+        // Verify that the internMentorRepository.save method was not called
+        verify(internMentorRepository, never()).save(internMentorMap);
+    }
 
 }

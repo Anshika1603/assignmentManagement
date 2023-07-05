@@ -8,6 +8,11 @@ import org.springframework.http.HttpStatus;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
+/**
+ The ApiResponse class represents a generic response object that is used to encapsulate the response data
+ and metadata returned by an API.
+ */
 public class ApiResponse {
 
     /**

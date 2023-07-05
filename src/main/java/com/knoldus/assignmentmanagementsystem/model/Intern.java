@@ -17,23 +17,50 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Intern {
     /**
-     * The internId field represents the unique identifier for an intern
-     * in the Assignment Management System.
+     The unique identifier (ID) of the intern.
      */
     @Id
     private Integer internId;
 
+
+    /**
+     The employee ID of the intern.
+     */
     private String empId;
 
+
+    /**
+     The competency name of the intern.
+     */
     private String competencyName;
 
+
+    /**
+     The first name of the intern.
+     */
     private String firstName;
 
+
+    /**
+     The last name of the intern.
+     */
     private String lastName;
 
+
+    /**
+     The skills of the intern.
+     */
     private String skills;
 
-    private LocalDate createdDate=LocalDate.now();
+    /**
+     The date when the intern was created. Defaults to the current date.
+     */
+    private LocalDate createdDate = LocalDate.now();
 
-    private LocalDate modifiedDate=LocalDate.now();
+
+    /**
+     The date when the intern was last modified. Defaults to the current date.
+     */
+    private LocalDate modifiedDate = LocalDate.now();
+
 }

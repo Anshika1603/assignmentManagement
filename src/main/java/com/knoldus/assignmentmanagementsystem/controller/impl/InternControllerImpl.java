@@ -105,17 +105,21 @@ public class InternControllerImpl implements InternConroller {
      * @see ResponseEntity
      * @see Logger#info(String)
      */
-
     @Override
     public ResponseEntity<Optional<Intern>> getDetailsOfInterns(@PathVariable Integer internId) {
         logger.info("Finding details of Intern");
         return ResponseEntity.ok(internService.getDetails(internId));
     }
 
+
+    /**
+     Submits an assignment by the intern.
+     @param assignment The Assignment object representing the assignment to be submitted.
+     @return A ResponseEntity with a String message indicating the result of the submission operation.
+     */
     @Override
     public ResponseEntity<String> submitAssignment(@RequestBody Assignment assignment) {
         logger.info("submitting Assignment");
         return ResponseEntity.ok(internService.submitAssignment(assignment));
     }
-
 }

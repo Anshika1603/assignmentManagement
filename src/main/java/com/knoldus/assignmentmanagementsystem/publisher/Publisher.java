@@ -5,16 +5,26 @@ import com.azure.messaging.servicebus.ServiceBusMessage;
 import com.azure.messaging.servicebus.ServiceBusSenderClient;
 import org.springframework.stereotype.Component;
 
-import java.util.concurrent.atomic.AtomicInteger;
+/**
+
+ The Publisher class is responsible for publishing messages to a Service Bus topic.
+ */
 @Component
 public class Publisher {
-    // The connection string to your Service Bus namespace
+
+    // The connection string to the Service Bus namespace
     static final String connectionString = "Endpoint=sb://assignmentmanagement.servicebus.windows.net/;SharedAccessKeyName=trigger;SharedAccessKey=jCp9zydh2NpdaigVjJiX+eDmIsxBWcEWa+ASbFXDJvU=";
 
-    // The topic name
+    // The name of the topic
     static final String topicName = "assignment";
 
-    public void meaagesender() {
+
+    /**
+     * Sends a batch of messages to the Service Bus topic.
+     */
+    public void messageSender() {
+
+        // Create a ServiceBusSenderClient using the connection string and topic name
         ServiceBusSenderClient sender = new ServiceBusClientBuilder()
                 .connectionString(connectionString)
                 .sender()
@@ -31,3 +41,4 @@ public class Publisher {
 
     }
 }
+

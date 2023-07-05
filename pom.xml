@@ -65,6 +65,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<!--		https://repo.maven.apache.org/maven2 -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -75,6 +76,14 @@
 				<artifactId>azure-messaging-servicebus</artifactId>
 				<version>7.14.0</version>
 			</dependency>
+
+
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>azure-keyvault</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-mongodb -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

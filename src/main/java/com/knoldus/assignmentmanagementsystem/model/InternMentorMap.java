@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+/**
+ The InternMentorMap class represents a mapping between an intern and a mentor in the system.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,14 +19,28 @@ import java.time.LocalDate;
 @Table(name = "InternMentorMap")
 public class InternMentorMap {
 
+    /**
+     * The ID of the intern.
+     */
     @Id
     private Integer internId;
 
+
+    /**
+     * The ID of the mentor.
+     */
     @Id
     private Integer mentorId;
 
-    private LocalDate creationDate=LocalDate.now();
 
-    private LocalDate modifiedDate=LocalDate.now();
+    /**
+     * The date when the mapping was created. Defaults to the current date.
+     */
+    private LocalDate creationDate = LocalDate.now();
 
+
+    /**
+     * The date when the mapping was last modified. Defaults to the current date.
+     */
+    private LocalDate modifiedDate = LocalDate.now();
 }
