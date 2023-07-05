@@ -6,7 +6,6 @@ import com.knoldus.assignmentmanagementsystem.model.Intern;
 import com.knoldus.assignmentmanagementsystem.repository.AssignmentRepository;
 import com.knoldus.assignmentmanagementsystem.repository.InternRepository;
 import com.knoldus.assignmentmanagementsystem.service.InternService;
-import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +31,13 @@ public class InternServiceImpl implements InternService {
     @Autowired
     private InternRepository internRepository;
 
+
+    /**
+     Autowires the AssignmentRepository bean, which is used for
+     performing database operations related to assignments.
+     @param assignmentRepository The AssignmentRepository
+     object to be autowired.
+     */
     @Autowired(required = true)
     private AssignmentRepository assignmentRepository;
 
@@ -68,11 +74,15 @@ public class InternServiceImpl implements InternService {
      * @param intern   The updated Intern object containing the new information.
      * @param internId The ID of the intern to be updated.
      * @return A string indicating the success of the update operation.
-     * @throws OpenApiResourceNotFoundException if the intern with the given ID is not found in the data source.
+     * @throws OpenApiResourceNotFoundException if the intern
+     * with the given ID is not found in the data source.
      */
     @Override
-    public String updateIntern(Intern intern, Integer internId) {
-        Intern existingIntern = internRepository.findById(internId).orElseThrow(() -> new ResourceNotFoundException("Intern not found with InternId " + internId));
+    public String updateIntern(final Intern intern, final Integer internId) {
+        Intern existingIntern = internRepository.
+                findById(internId).orElseThrow(
+                        () -> new ResourceNotFoundException(
+                                "Intern not found with InternId " + internId));
          existingIntern.setEmpId(intern.getEmpId());
         existingIntern.setCompetencyName(intern.getCompetencyName());
         existingIntern.setSkills(intern.getSkills());
@@ -118,6 +128,12 @@ public class InternServiceImpl implements InternService {
         return internRepository.findById(internId);
     }
 
+
+    /**
+     Submits an assignment and saves it in the repository.
+     @param assignment The Assignment object to be submitted.
+     @return A string indicating the successful submission of the assignment.
+     */
     @Override
     public String submitAssignment(final Assignment assignment) {
         assignmentRepository.save(assignment);

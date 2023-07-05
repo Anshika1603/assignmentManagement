@@ -1,15 +1,12 @@
 package com.knoldus.assignmentmanagementsystem.service;
-
 import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Intern;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 /**
  This interface represents the service layer for handling Intern entities.
-
  It defines methods for retrieving, adding, updating, and deleting Interns.
  */
 
@@ -27,7 +24,7 @@ public interface InternService {
      @param intern The Intern object to be added.
      @return The added Intern object.
      */
-    Intern addIntern(final Intern intern);
+    Intern addIntern(Intern intern);
 
     /**
      Updates an existing Intern in the system.
@@ -35,14 +32,14 @@ public interface InternService {
      @param internId The ID of the Intern to be updated.
      @return A string indicating the success or failure of the update operation.
      */
-    String updateIntern(final Intern intern, final Integer internId);
+    String updateIntern(Intern intern, Integer internId);
 
     /**
      Deletes an Intern from the system.
      @param internId The ID of the Intern to be deleted.
      @return A string indicating the success or failure of the delete operation.
      */
-    String deleteIntern(final Integer internId);
+    String deleteIntern(Integer internId);
 
     /**
      Retrieves the details of a specific Intern.
@@ -50,7 +47,12 @@ public interface InternService {
      @return An Optional object containing the Intern details if found,
      otherwise empty.
      */
-    Optional<Intern> getDetails(final Integer internId);
+    Optional<Intern> getDetails(Integer internId);
 
-    String submitAssignment(final Assignment assignment);
+    /**
+     Submits an assignment.
+     @param assignment The Assignment object to be submitted.
+     @return A string indicating the successful submission of the assignment.
+     */
+    String submitAssignment(Assignment assignment);
 }
