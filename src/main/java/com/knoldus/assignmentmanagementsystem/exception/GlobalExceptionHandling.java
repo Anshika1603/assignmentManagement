@@ -21,4 +21,11 @@ public class GlobalExceptionHandling {
         ApiResponse response = ApiResponse.builder().message(message).success(false).status(HttpStatus.NOT_FOUND).build();
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(value = EmptyInputException.class)
+    public ResponseEntity<Object> handlerEmptyInputException(EmptyInputException emptyInputException) {
+        String message = emptyInputException.getMessage();
+        ApiResponse response = ApiResponse.builder().message(message).success(false).status(HttpStatus.NO_CONTENT).build();
+        return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
+    }
 }

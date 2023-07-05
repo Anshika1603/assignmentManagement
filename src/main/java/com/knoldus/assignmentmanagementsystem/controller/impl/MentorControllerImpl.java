@@ -31,6 +31,10 @@ public class MentorControllerImpl implements MentorController {
     @Autowired
     private MentorService mentorService;
 
+    /**
+
+     Autowires an instance of the Publisher class to the current class.
+     */
     @Autowired
     private Publisher publisher;
 
@@ -50,7 +54,6 @@ public class MentorControllerImpl implements MentorController {
      @see ResponseEntity
      @see Logger#info(String)
      */
-
     public ResponseEntity<List<Mentor>> getAllMentors() {
         LOGGER.info("Finding mentors");
         return ResponseEntity.ok(mentorService.getAllMentor());
@@ -123,7 +126,13 @@ public class MentorControllerImpl implements MentorController {
                 getDetailsOfMentor(mentorId));
     }
 
-
+    /**
+     Creates a new assignment using the provided Assignment object.
+     @param assignment The Assignment object representing
+     the assignment to be created.
+     @return A ResponseEntity with a String message
+     indicating the result of the creation operation.
+     */
     public ResponseEntity<String> createAssignment(@RequestBody Assignment assignment){
         String publish= mentorService.createAssignment(assignment);
         return ResponseEntity.ok(publish);

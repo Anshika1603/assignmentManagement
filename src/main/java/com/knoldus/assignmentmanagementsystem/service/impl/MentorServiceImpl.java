@@ -125,7 +125,7 @@ public class MentorServiceImpl implements MentorService {
     public String createAssignment(final Assignment assignment) {
         Assignment assignment1= assignmentRepository.save(assignment);
         if(assignment1!=null){
-            publisher.meaagesender();
+            publisher.messageSender();
             return "assignment is saved";
         }
         else{

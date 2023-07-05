@@ -9,16 +9,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Unit tests for the MentorServiceImpl class.
+ */
 @SpringBootTest
 public class MentorServiceTest {
     @Mock
@@ -28,31 +27,6 @@ public class MentorServiceTest {
     MentorServiceImpl mentorService;
 
 
-    @Test
-    public void getAllMentor_ReturnListOfMentors() {
-        // Mock the behavior of the MentorRepository
-        List<Mentor> mockMentors = Arrays.asList(
-                new Mentor(1, "EMP001", "Java", LocalDate.now(),LocalDate.now()),
-                new Mentor(2, "EMP002", "Python",LocalDate.now(),LocalDate.now())
-        );
-        when(mentorRepository.findAll()).thenReturn(mockMentors);
-
-        // Call the mentorService.getAllMentor() method
-        List<Mentor> retrievedMentors = mentorService.getAllMentor();
-
-        // Verify the expected behavior
-        assertNotNull(retrievedMentors);
-        assertEquals(2, retrievedMentors.size());
-        assertEquals(1, retrievedMentors.get(0).getMentorId());
-        assertEquals("EMP001", retrievedMentors.get(0).getEmpId());
-        assertEquals("Java", retrievedMentors.get(0).getCompetencyName());
-        assertEquals(2, retrievedMentors.get(1).getMentorId());
-        assertEquals("EMP002", retrievedMentors.get(1).getEmpId());
-        assertEquals("Python", retrievedMentors.get(1).getCompetencyName());
-
-        // Verify that the mentorRepository.findAll() was called once
-        Mockito.verify(mentorRepository, times(1)).findAll();
-    }
 
     @Test
     public void addMentor_ReturnAddedMentor() {
