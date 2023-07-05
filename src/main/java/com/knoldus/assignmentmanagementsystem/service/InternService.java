@@ -27,7 +27,7 @@ public interface InternService {
      @param intern The Intern object to be added.
      @return The added Intern object.
      */
-    Intern addIntern(Intern intern);
+    Intern addIntern(final Intern intern);
 
     /**
      Updates an existing Intern in the system.
@@ -35,14 +35,14 @@ public interface InternService {
      @param internId The ID of the Intern to be updated.
      @return A string indicating the success or failure of the update operation.
      */
-    String updateIntern(Intern intern, Integer internId);
+    String updateIntern(final Intern intern, final Integer internId);
 
     /**
      Deletes an Intern from the system.
      @param internId The ID of the Intern to be deleted.
      @return A string indicating the success or failure of the delete operation.
      */
-    String deleteIntern(Integer internId);
+    String deleteIntern(final Integer internId);
 
     /**
      Retrieves the details of a specific Intern.
@@ -50,7 +50,7 @@ public interface InternService {
      @return An Optional object containing the Intern details if found,
      otherwise empty.
      */
-    Optional<Intern> getDetails(Integer internId);
+    Optional<Intern> getDetails(final Integer internId);
 
-    String submitAssignment(Assignment assignment);
+    String submitAssignment(final Assignment assignment);
 }

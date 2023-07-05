@@ -25,7 +25,7 @@ public interface MentorService {
      @param mentor The Mentor object to be added.
      @return The added Mentor object.
      */
-    Mentor addMentor(Mentor mentor);
+    Mentor addMentor(final Mentor mentor);
 
     /**
      Updates an existing mentor in the system.
@@ -33,7 +33,7 @@ public interface MentorService {
      @param mentorId The ID of the mentor to be updated.
      @return A string indicating the success of the update operation.
      */
-    String updateMentor(Mentor mentor, Integer mentorId);
+    String updateMentor(final Mentor mentor, final Integer mentorId);
 
     /**
      Deletes a mentor from the system.
@@ -41,7 +41,7 @@ public interface MentorService {
      @return A string indicating the success of the delete operation,
      including the ID of the deleted mentor.
      */
-    String deleteMentor(Integer mentorId);
+    String deleteMentor(final Integer mentorId);
 
     /**
      Retrieves the details of a specific mentor.
@@ -49,7 +49,13 @@ public interface MentorService {
      @return An Optional object containing the mentor details if found,
      otherwise empty.
      */
-    Optional<Mentor> getDetailsOfMentor(Integer mentorId);
+    Optional<Mentor> getDetailsOfMentor(final Integer mentorId);
 
-    String createAssignment(Assignment assignment);
+
+    /**
+     Creates an assignment.
+     @param assignment The Assignment object to be created.
+     @return A string indicating the successful creation of the assignment.
+     */
+    String createAssignment(final Assignment assignment);
 }

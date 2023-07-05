@@ -4,40 +4,31 @@ spring:
 
   data:
     mongodb:
-      database: ${SPRING_DATA_MONGODB_DATABASE}
-      uri: ${SPRING_DATA_MONGODB_URI}
-<<<<<<< Updated upstream
+    database: ${SPRING_DATA_MONGODB_DATABASE}
+    uri: ${SPRING_DATA_MONGODB_URI}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
 
-=======
->>>>>>> Stashed changes
+
   jpa:
     show-sql: ${SPRING_JPA_SHOW_SQL}
     hibernate:
       ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
     properties:
       hibernate:
-        dialect: ${SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT}
+      dialect: ${SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT}
 
 logging:
-  level:
-    org.springframework.boot.logging.LogLevel: ${LOGGING_LEVEL_ORG_SPRINGFRAMEWORK}
+  level:${LOGGING_LEVEL_ORG_SPRINGFRAMEWORK}
 
 server:
   port: ${SERVER_PORT}
 
-<<<<<<< Updated upstream
 
-
-
-
-
-=======
 azure:
   keyvault:
     enabled: true
     uri: https://vault-springboot.vault.azure.net/
     token-acquire-timeout-seconds: 60
     refresh-interval: 1800000
->>>>>>> Stashed changes
+

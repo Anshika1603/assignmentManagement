@@ -7,7 +7,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- The InternMentorMapId class represents the composite primary key for the InternMentorMap entity in the system.
+ The InternMentorMapId class represents the composite primary key
+ for the InternMentorMap entity in the system.
  */
 @Component
 public class InternMentorMapId implements Serializable {

@@ -25,6 +25,11 @@ class InternServiceTest {
     @InjectMocks
     InternServiceImpl internService;
 
+
+    /**
+     * Test case for adding an intern when the intern is valid.
+     * The method should return the saved intern and ensure that the internRepository.save method is called.
+     */
     @Test
     public void addIntern_WhenInternIsValid_ReturnSavedIntern() {
         // Create a mock intern object
@@ -46,6 +51,11 @@ class InternServiceTest {
         Mockito.verify(internRepository, times(1)).save(mockIntern);
     }
 
+
+    /**
+     * Test case for updating an existing intern.
+     * The method should update the intern details, return a success message, and ensure that the internRepository.findById method is called.
+     */
     @Test
     public void updateIntern_WhenInternExists_UpdateInternDetailsAndReturnSuccessMessage() {
         Integer internId = 1;
@@ -71,6 +81,10 @@ class InternServiceTest {
     }
 
 
+    /**
+     * Test case for updating an intern that does not exist.
+     * The method should throw a ResourceNotFoundException and ensure that the internRepository.findById method is called.
+     */
     @Test
     public void updateIntern_WhenInternDoesNotExist_ThrowException() {
         Integer internId = 1;
@@ -86,7 +100,10 @@ class InternServiceTest {
         verify(internRepository, times(1)).findById(internId);
     }
 
-
+    /**
+     * Test case for retrieving the details of an existing intern.
+     * The method should return a non-empty Optional containing the intern and ensure that the internRepository.findById method is called.
+     */
     @Test
     public void getDetails_WhenInternExists_ReturnInternOptional() {
         Integer internId = 1;
@@ -106,6 +123,10 @@ class InternServiceTest {
         verify(internRepository, times(1)).findById(internId);
     }
 
+    /**
+     * Test case for retrieving the details of an intern that does not exist.
+     * The method should return an empty Optional and ensure that the internRepository.findById method is called.
+     */
     @Test
     public void getDetails_WhenInternDoesNotExist_ReturnEmptyOptional() {
         Integer internId = 1;
@@ -123,6 +144,10 @@ class InternServiceTest {
         verify(internRepository, times(1)).findById(internId);
     }
 
+    /**
+     * Test case for deleting an existing intern.
+     * The method should return a success message and ensure that the internRepository.deleteById method is called.
+     */
     @Test
     public void deleteIntern_WhenInternExists_ReturnSuccessMessage() {
         Integer internId = 1;
@@ -136,7 +161,10 @@ class InternServiceTest {
         verify(internRepository, times(1)).deleteById(internId);
     }
 
-
+    /**
+     * Test case for deleting an intern that does not exist.
+     * The method should throw a ResourceNotFoundException and ensure that the internRepository.deleteById method is not called.
+     */
     @Test
     public void deleteIntern_WhenInternDoesNotExist_ThrowResourceNotFoundException() {
         Integer internId = 1;
