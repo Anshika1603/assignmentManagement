@@ -14,9 +14,6 @@ public class Publisher {
     // The topic name
     static final String topicName = "assignment";
 
-    // Number of messages to be sent to the topic
-    static final int numOfMessages = 3;
-
     public void meaagesender() {
         ServiceBusSenderClient sender = new ServiceBusClientBuilder()
                 .connectionString(connectionString)
@@ -24,22 +21,13 @@ public class Publisher {
                 .topicName(topicName)
                 .buildClient();
 
-        AtomicInteger sequenceNumber = new AtomicInteger(1);
+        ServiceBusMessage message = new ServiceBusMessage("Assignment has been created successfully");
+        sender.sendMessage(message);
 
-        for (int i = 0; i < numOfMessages; i++) {
-            ServiceBusMessage message = new ServiceBusMessage("Message " + sequenceNumber.getAndIncrement());
-            sender.sendMessage(message);
-        }
-
-        System.out.printf("A batch of %d messages has been published to the topic.%n", numOfMessages);
+        System.out.printf("A message has been published to the topic.");
 
         // Close the sender
         sender.close();
 
-        System.out.println("Press any key to end the application");
-        try {
-            System.in.read();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }}
+    }
+}
