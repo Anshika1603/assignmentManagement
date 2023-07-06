@@ -25,8 +25,8 @@ import java.util.Optional;
 public class MentorServiceImpl implements MentorService {
 
     /**
-     The mentorRassignmentRepositoryepository field is annotated with
-     @Autowired, indicating that it is a dependency to be automatically
+     The mentorRassignmentRepositoryepository field is annotated
+     with @Autowired, indicating that it is a dependency to be automatically
      injected by the Spring framework.
      */
     @Autowired
@@ -50,8 +50,12 @@ public class MentorServiceImpl implements MentorService {
      @param mongoTemplate The MongoTemplate object to be autowired.
      */
     @Autowired
-    MongoTemplate mongoTemplate;
+    private MongoTemplate mongoTemplate;
 
+
+    /**
+     Autowired field for the Publisher object.
+     */
     @Autowired
     private Publisher publisher;
 
@@ -111,11 +115,10 @@ public class MentorServiceImpl implements MentorService {
     @Override
     public String deleteMentor(final Integer mentorId) {
         Optional<Mentor> mentor = mentorRepository.findById(mentorId);
-        if(mentor.isPresent()){
+        if (mentor.isPresent()) {
             mentorRepository.deleteById(mentorId);
             return "deleted mentor where id = " + mentorId;
-        }
-        else {
+        } else {
             throw new ResourceNotFoundException("no record of this id found");
         }
     }
@@ -146,12 +149,11 @@ public class MentorServiceImpl implements MentorService {
      */
     @Override
     public String createAssignment(final Assignment assignment) {
-        Assignment assignment1= assignmentRepository.save(assignment);
-        if(assignment1!=null){
+        Assignment assignment1 = assignmentRepository.save(assignment);
+        if (assignment1 != null) {
             publisher.messageSender();
             return "assignment is saved";
-        }
-        else{
+        } else {
             throw new EmptyInputException("Please enter a valid Input");
         }
     }

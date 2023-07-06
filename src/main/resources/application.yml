@@ -23,5 +23,3 @@ logging:
 
 server:
   port: ${SERVER_PORT}
-
-

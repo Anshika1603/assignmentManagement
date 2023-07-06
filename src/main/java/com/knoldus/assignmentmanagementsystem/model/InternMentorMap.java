@@ -1,7 +1,11 @@
 package com.knoldus.assignmentmanagementsystem.model;
 
 
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +13,8 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 /**
- The InternMentorMap class represents a mapping between an intern and a mentor in the system.
+ The InternMentorMap class represents a mapping between
+ an intern and a mentor in the system.
  */
 @Data
 @AllArgsConstructor
@@ -40,7 +45,8 @@ public class InternMentorMap {
 
 
     /**
-     * The date when the mapping was last modified. Defaults to the current date.
+     * The date when the mapping was last modified.
+     * Defaults to the current date.
      */
     private LocalDate modifiedDate = LocalDate.now();
 }

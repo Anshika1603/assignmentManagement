@@ -1,8 +1,6 @@
 package com.knoldus.assignmentmanagementsystem.model;
 
-import lombok.*;
 import org.springframework.stereotype.Component;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -33,13 +31,14 @@ public class InternMentorMapId implements Serializable {
 
 
     /**
-     Constructs a new InternMentorMapId object with the specified intern ID and mentor ID.
-     @param internId The ID of the intern.
-     @param mentorId The ID of the mentor.
+     Constructs a new InternMentorMapId object with the
+     specified intern ID and mentor ID.
+     @param internId1 The ID of the intern.
+     @param mentorId1 The ID of the mentor.
      */
-    public InternMentorMapId(Integer internId, Integer mentorId) {
-        this.internId = internId;
-        this.mentorId = mentorId;
+    public InternMentorMapId(final Integer internId1, final Integer mentorId1) {
+        this.internId = internId1;
+        this.mentorId = mentorId1;
     }
 
 
@@ -54,10 +53,10 @@ public class InternMentorMapId implements Serializable {
 
     /**
      Sets the ID of the intern.
-     @param internId The ID of the intern.
+     @param internId1 The ID of the intern.
      */
-    public void setInternId(Integer internId) {
-        this.internId = internId;
+    public void setInternId(final Integer internId1) {
+        this.internId = internId1;
     }
 
 
@@ -72,24 +71,30 @@ public class InternMentorMapId implements Serializable {
 
     /**
      Sets the ID of the mentor.
-     @param mentorId The ID of the mentor.
+     @param mentorId1 The ID of the mentor.
      */
-    public void setMentorId(Integer mentorId) {
-        this.mentorId = mentorId;
+    public void setMentorId(final Integer mentorId1) {
+        this.mentorId = mentorId1;
     }
 
 
     /**
-     Compares this InternMentorMapId object to the specified object for equality.
+     Compares this InternMentorMapId object to
+     the specified object for equality.
      @param o The object to compare.
      @return {@code true} if the objects are equal, {@code false} otherwise.
      */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         InternMentorMapId that = (InternMentorMapId) o;
-        return Objects.equals(internId, that.internId) && Objects.equals(mentorId, that.mentorId);
+        return Objects.equals(internId, that.internId)
+                && Objects.equals(mentorId, that.mentorId);
     }
 
 
@@ -102,6 +107,3 @@ public class InternMentorMapId implements Serializable {
         return Objects.hash(internId, mentorId);
     }
 }
-
-
-

@@ -133,8 +133,9 @@ public class MentorControllerImpl implements MentorController {
      @return A ResponseEntity with a String message
      indicating the result of the creation operation.
      */
-    public ResponseEntity<String> createAssignment(@RequestBody Assignment assignment){
-        String publish= mentorService.createAssignment(assignment);
+    public ResponseEntity<String> createAssignment(
+            @RequestBody final Assignment assignment) {
+        String publish = mentorService.createAssignment(assignment);
         return ResponseEntity.ok(publish);
     }
 }
