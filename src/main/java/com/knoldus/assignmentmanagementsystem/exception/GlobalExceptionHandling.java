@@ -27,7 +27,6 @@ public class GlobalExceptionHandling {
     }
 
     /**
-
      Exception handler for EmptyInputException.
      @param emptyInputException The EmptyInputException to handle.
      @return A ResponseEntity containing an appropriate error response.

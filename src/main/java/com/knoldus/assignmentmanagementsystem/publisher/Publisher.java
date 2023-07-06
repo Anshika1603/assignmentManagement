@@ -7,11 +7,9 @@ import com.azure.messaging.servicebus.ServiceBusException;
 import com.azure.messaging.servicebus.ServiceBusMessage;
 import com.azure.messaging.servicebus.ServiceBusSenderClient;
 import org.springframework.stereotype.Component;
-
 import java.time.Duration;
 
 /**
-
  The Publisher class is responsible for publishing
  messages to a Service Bus topic.
  */
@@ -90,3 +88,4 @@ public class Publisher {
         }
     }
 }
+
