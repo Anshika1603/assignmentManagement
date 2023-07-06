@@ -5,10 +5,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- The AssignmentRepository interface provides CRUD operations for the Assignment collection in MongoDB.
- @param <Assignment> the type of the entity class (Assignment)
- @param <String> the type of the ID field in the entity class (String)
+ The AssignmentRepository interface provides CRUD
+ operations for the Assignment collection in MongoDB.
  */
 @Repository
-public interface AssignmentRepository extends MongoRepository<Assignment, String> {
+public interface AssignmentRepository extends
+        MongoRepository<Assignment, String> {
 }

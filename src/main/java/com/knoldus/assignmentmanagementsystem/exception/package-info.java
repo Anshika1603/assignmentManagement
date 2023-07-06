@@ -3,4 +3,3 @@
  * define data access operation for the application.
  */
 package com.knoldus.assignmentmanagementsystem.exception;
-

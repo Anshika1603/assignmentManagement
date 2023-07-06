@@ -1,8 +1,6 @@
 package com.knoldus.assignmentmanagementsystem.service;
 
 import com.knoldus.assignmentmanagementsystem.model.InternMentorMap;
-import com.knoldus.assignmentmanagementsystem.model.Assignment;
-import com.knoldus.assignmentmanagementsystem.model.InternMentorMapId;
 import com.knoldus.assignmentmanagementsystem.model.KipKupPlan;
 import org.springframework.stereotype.Service;
 
@@ -16,38 +14,39 @@ public interface AdminService {
 
     /**
      * Creates a new KipKupPlan.
-     *
-     * @param kipKupPlan The KipKupPlan object representing the plan to be created.
+     * @param kipKupPlan The KipKupPlan object
+     * representing the plan to be created.
      * @return A String indicating the result of the operation.
      */
-    public String createPlan(KipKupPlan kipKupPlan);
+    String createPlan(KipKupPlan kipKupPlan);
 
     /**
      * Updates an existing KipKupPlan with the specified sessionId.
-     *
      * @param kipKupPlan The KipKupPlan object representing the updated plan.
      * @param sessionId  The unique identifier of the session.
      * @return A String indicating the result of the operation.
      */
-    public String updateKipKupPlan(KipKupPlan kipKupPlan, Integer sessionId);
+    String updateKipKupPlan(KipKupPlan kipKupPlan, Integer sessionId);
 
     /**
      * Assigns a mentor to an intern.
-     *
-     * @param internMentorMap The InternMentorMap object representing the mapping between an intern and a mentor.
+     * @param internMentorMap The InternMentorMap object representing
+     * the mapping between an intern and a mentor.
      * @return A String indicating the result of the operation.
      */
-    public String assignMentorToIntern(InternMentorMap internMentorMap);
+    String assignMentorToIntern(InternMentorMap internMentorMap);
 
     /**
      * Reassigns a mentor for a specific intern.
-     *
      * @param internId The unique identifier of the intern.
      * @param mentorId The unique identifier of the mentor.
-     * @param internMentorMap  The InternMentorMap object representing the updated mapping.
+     * @param internMentorMap  The InternMentorMap object
+     * representing the updated mapping.
      * @return A String indicating the result of the operation.
      */
-    public String reassignMentor(Integer mentorId, Integer internId, InternMentorMap internMentorMap);
+    String reassignMentor(Integer mentorId,
+                          Integer internId,
+                          InternMentorMap internMentorMap);
 
 }
 

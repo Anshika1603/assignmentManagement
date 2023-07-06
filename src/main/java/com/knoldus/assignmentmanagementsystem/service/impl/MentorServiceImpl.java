@@ -8,7 +8,6 @@ import com.knoldus.assignmentmanagementsystem.publisher.Publisher;
 import com.knoldus.assignmentmanagementsystem.repository.AssignmentRepository;
 import com.knoldus.assignmentmanagementsystem.repository.MentorRepository;
 import com.knoldus.assignmentmanagementsystem.service.MentorService;
-import org.springdoc.api.OpenApiResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
@@ -26,19 +25,37 @@ import java.util.Optional;
 public class MentorServiceImpl implements MentorService {
 
     /**
-     The mentorRassignmentRepositoryepository field is annotated with @Autowired,
-     indicating that it is a dependency
-     to be automatically injected by the Spring framework.
+     The mentorRassignmentRepositoryepository field is annotated
+     with @Autowired, indicating that it is a dependency to be automatically
+     injected by the Spring framework.
      */
     @Autowired
     private MentorRepository mentorRepository;
 
+
+
+    /**
+     Autowires the AssignmentRepository bean, which is used for
+     performing database operations related to assignments.
+     */
     @Autowired
     private AssignmentRepository assignmentRepository;
 
-    @Autowired
-    MongoTemplate mongoTemplate;
 
+
+
+    /**
+     Autowires the MongoTemplate bean, which provides
+     the core MongoDB operations for the application.
+     @param mongoTemplate The MongoTemplate object to be autowired.
+     */
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
+
+    /**
+     Autowired field for the Publisher object.
+     */
     @Autowired
     private Publisher publisher;
 
@@ -98,11 +115,10 @@ public class MentorServiceImpl implements MentorService {
     @Override
     public String deleteMentor(final Integer mentorId) {
         Optional<Mentor> mentor = mentorRepository.findById(mentorId);
-        if(mentor.isPresent()){
+        if (mentor.isPresent()) {
             mentorRepository.deleteById(mentorId);
             return "deleted mentor where id = " + mentorId;
-        }
-        else {
+        } else {
             throw new ResourceNotFoundException("no record of this id found");
         }
     }
@@ -121,14 +137,23 @@ public class MentorServiceImpl implements MentorService {
         return mentorRepository.findById(mentorId);
     }
 
+
+
+    /**
+
+     Creates an assignment by saving it in the repository
+     and sending a message through the publisher.
+     @param assignment The Assignment object to be created and saved.
+     @return A string indicating the status of the operation.
+     @throws EmptyInputException If the assignment object is null or empty.
+     */
     @Override
     public String createAssignment(final Assignment assignment) {
-        Assignment assignment1= assignmentRepository.save(assignment);
-        if(assignment1!=null){
+        Assignment assignment1 = assignmentRepository.save(assignment);
+        if (assignment1 != null) {
             publisher.messageSender();
             return "assignment is saved";
-        }
-        else{
+        } else {
             throw new EmptyInputException("Please enter a valid Input");
         }
     }

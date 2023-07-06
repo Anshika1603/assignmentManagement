@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 
 /**
 
- The InternMentorRepository interface provides CRUD operations for the InternMentorMap entity
+ The InternMentorRepository interface provides CRUD operations
+ for the InternMentorMap entity
  using the JpaRepository interface.
- @param <InternMentorMap> the type of the entity class (InternMentorMap)
- @param <InternMentorMapId> the type of the ID class for the InternMentorMap entity (InternMentorMapId)
  */
 @Repository
-public interface InternMentorRepository extends JpaRepository<InternMentorMap, InternMentorMapId> {
+public interface InternMentorRepository extends
+        JpaRepository<InternMentorMap, InternMentorMapId> {
 }

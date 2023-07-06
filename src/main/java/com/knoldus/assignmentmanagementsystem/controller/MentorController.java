@@ -1,18 +1,15 @@
 package com.knoldus.assignmentmanagementsystem.controller;
 
-import com.knoldus.assignmentmanagementsystem.exception.ResourceNotFoundException;
-import com.knoldus.assignmentmanagementsystem.model.Assignment;
-import com.knoldus.assignmentmanagementsystem.model.Mentor;
-import com.knoldus.assignmentmanagementsystem.publisher.Publisher;
-import com.knoldus.assignmentmanagementsystem.service.MentorService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.knoldus.assignmentmanagementsystem.model.Assignment;
 import com.knoldus.assignmentmanagementsystem.model.Mentor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +26,7 @@ public interface MentorController {
      Mentor objects representing all the mentors.
      */
     @GetMapping("/getAllMentors")
-    public ResponseEntity<List<Mentor>> getAllMentors();
+    ResponseEntity<List<Mentor>> getAllMentors();
 
 
     /**
@@ -38,7 +35,7 @@ public interface MentorController {
      @return A ResponseEntity containing the added Mentor object.
      */
     @PostMapping("/addMentor")
-    public ResponseEntity<Mentor> addMentor(@RequestBody final Mentor mentor);
+    ResponseEntity<Mentor> addMentor(@RequestBody Mentor mentor);
 
 
     /**
@@ -50,16 +47,18 @@ public interface MentorController {
      indicating the result of the update operation.
      */
     @PutMapping("/updateMentor/{mentorId}")
-    public ResponseEntity<String> updateMentor(@RequestBody final Mentor mentor, @PathVariable final Integer mentorId);
+    ResponseEntity<String> updateMentor(@RequestBody Mentor mentor,
+                                        @PathVariable Integer mentorId);
 
 
     /**
      Deletes a mentor with the specified mentor ID.
      @param mentorId The ID of the mentor to be deleted.
-     @return A ResponseEntity with a String message indicating the result of the delete operation.
+     @return A ResponseEntity with a String message
+     indicating the result of the delete operation.
      */
     @DeleteMapping("/deleteMentor/{mentorId}")
-    public ResponseEntity<String> deleteMentor(@PathVariable final Integer mentorId);
+    ResponseEntity<String> deleteMentor(@PathVariable Integer mentorId);
 
 
     /**
@@ -71,8 +70,8 @@ public interface MentorController {
      Mentor object representing the details of the mentor.
      */
     @GetMapping("/getDetailsOfMentor/{mentorId}")
-    public ResponseEntity<Optional<Mentor>>
-    getDetailsOfMentors(@PathVariable final Integer mentorId);
+    ResponseEntity<Optional<Mentor>>
+    getDetailsOfMentors(@PathVariable Integer mentorId);
 
 
     /**
@@ -83,5 +82,5 @@ public interface MentorController {
      indicating the result of the creation operation.
      */
     @PostMapping("/createAssignment")
-    public ResponseEntity<String> createAssignment(@RequestBody final Assignment assignment);
+    ResponseEntity<String> createAssignment(@RequestBody Assignment assignment);
 }
